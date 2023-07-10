@@ -1,7 +1,6 @@
 const Koa = require('koa')
 const { koaBody } = require('koa-body')
 const errHandler = require('./errHandler')
-const userRouter = require('../router/user.route')
 const emailRouter = require('../router/email.route')
 
 const { koaSwagger } = require('koa2-swagger-ui')

@@ -29,7 +29,5 @@ const Email = seq.define("email_save", {
 })
 
 // 强制同步数据库(创建数据表)
-Email.sync({
-  force: true
-})
+Email.sync()
 module.exports = Email
