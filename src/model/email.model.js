@@ -29,7 +29,7 @@ const Email = seq.define("email_save", {
 })
 
 // 强制同步数据库(创建数据表)
-// Emial.sync({
-//   force: true
-// })
+Email.sync({
+  force: true
+})
 module.exports = Email

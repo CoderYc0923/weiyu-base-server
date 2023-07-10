@@ -2,11 +2,24 @@ const Koa = require('koa')
 const { koaBody } = require('koa-body')
 const errHandler = require('./errHandler')
 const userRouter = require('../router/user.route')
+const emailRouter = require('../router/email.route')
+
+const { koaSwagger } = require('koa2-swagger-ui')
+const swagger = require('../config/config.swagger')
 
 const app = new Koa()
 
-app.use(koaBody())
-app.use(userRouter.routes())
+// swagger配置
+app.use(swagger.routes(), swagger.allowedMethods())
+app.use(koaSwagger({
+    routePrefix: '/swagger',
+    swaggerOptions: {
+        url: '/swagger.json',
+    },
+}))
+
+app.use(koaBody({multipart: true}))
+app.use(emailRouter.routes(), emailRouter.allowedMethods());
 // 统一错误处理
 app.on('error', errHandler)
 
