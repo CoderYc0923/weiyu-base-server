@@ -3,7 +3,7 @@ const template = require('art-template');
 const path = require("path");
 
 const { getNeedSendEmails, deleteSendedEmail } = require('../service/email.service')
-const { SEND_EMAIL, SEND_PASS, SEND_TITLE } = require('../config/config.default')
+const { SEND_EMAIL, SEND_EMAIL_TEMP, SEND_PASS, SEND_TITLE } = require('../config/config.default')
 
 const renderTemplate = (audio_url) => {
     return new Promise((resolve, reject) => {
@@ -29,7 +29,7 @@ const sendEmail = async () => {
                 }
             })
             let mailOptions = {
-                from: SEND_EMAIL,
+                from: SEND_EMAIL_TEMP,
                 to: send_email,
                 subject: SEND_TITLE,
                 html,

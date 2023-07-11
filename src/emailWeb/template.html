@@ -26,17 +26,78 @@
     }
 
     .music-content-bg {
+      background-color: #f1f3f4;
       height: 100vh;
     }
 
     .music-content {
+      position: relative;
       height: 100%;
-      background-color: transparent;
-      backdrop-filter: blur(3px);
       display: flex;
       justify-content: center;
       align-items: center;
       overflow: hidden;
+    }
+
+    .mask {
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 54px;
+    }
+    .mask-board {
+      position: absolute;
+      width: calc(100% + 6px);
+      height: 45px;
+      bottom: 0;
+      left: -3px;
+      background-color: #2167c6;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+    .mask-item {
+      width: 25%;
+      height: 54px;
+      border-radius: 45%;
+      background-color: #2167c6;
+      transform: rotate(0deg);
+      animation: torotate 3s linear -5s infinite;
+    }
+    @keyframes torotate {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    .sub-title {
+      position: absolute;
+      top: 38%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+    }
+    .tips {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .tips span {
+      text-decoration: underline;
+      color: #333;
     }
   </style>
 
@@ -52,46 +113,21 @@
         >
           <source id="mp3" src="{{ audio_url }}" />
         </audio>
+        <div class="mask">
+          <div class="mask-item"></div>
+          <div class="mask-item"></div>
+          <div class="mask-item"></div>
+          <div class="mask-item"></div>
+          <div class="mask-board"></div>
+        </div>
+        <p class="sub-title">一阵风吹来，我的话正好降落在你的耳畔</p>
+        <div class="tips">
+          <p>未语仅提供语音信件投递服务，不对以上任何内容承担责任</p>
+          <p>且不代表未语立场，如遇骚扰请</p>
+          <p>投诉至<span>3553654638@qq.com</span></p>
+        </div>
       </div>
     </div>
-    <script>
-            let audio = document.getElementById("audio");
-            audio.addEventListener('loadstart', function () {
-              console.log("客户端开始请求数据");
-          }, false);
-          audio.addEventListener('progress', function () {
-              console.log("客户端正在请求数据");
-          }, false);
-          audio.addEventListener('error', function () {
-              console.log("请求数据时遇到错误 ");
-          }, false);
-          audio.addEventListener('stalled', function () {
-              console.log("网速失速 ");
-          }, false);
-          audio.addEventListener('play', function () {
-              console.log("play()和autoplay开始播放时触发 ");
-          }, false);
-          audio.addEventListener('pause', function () {
-              console.log("暂停触发");
-          }, false);
-          audio.addEventListener('loadedmetadata', function () {
-              console.log("当指定的音频/视频的元数据已加载时");
-          }, false);
-          audio.addEventListener('loadeddata', function () {
-              console.log("当当前帧的数据已加载，但没有足够的数据来播放指定音频/视频的下一帧时，会发生 loadeddata 事件。");
-          }, false);
-          audio.addEventListener('waiting', function () {
-              console.log("等待数据，并非错误");
-          }, false);
-          audio.addEventListener('playing', function () {
-              console.log("正在播放时触发。");
-          }, false);
-          audio.addEventListener('canplay', function () {
-              console.log("可以播放，但中途可能因为加载而暂停");
-          }, false);
-          audio.addEventListener('canplaythrough', function () {
-              console.log("可以播放，歌曲全部加载完毕");
-          }, false);
-    </script>
+    <script></script>
   </body>
 </html>
