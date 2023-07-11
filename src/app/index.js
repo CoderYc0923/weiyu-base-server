@@ -2,6 +2,10 @@ const Koa = require('koa')
 const { koaBody } = require('koa-body')
 const errHandler = require('./errHandler')
 const emailRouter = require('../router/email.route')
+const Task = require('./task')
+
+//定时任务
+Task();
 
 const { koaSwagger } = require('koa2-swagger-ui')
 const swagger = require('../config/config.swagger')

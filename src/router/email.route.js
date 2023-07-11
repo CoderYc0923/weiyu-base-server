@@ -1,5 +1,5 @@
 const Router = require('koa-router')
-const { save } = require('../controller/email.controller')
+const { save, test } = require('../controller/email.controller')
 const { emailValidator, verifySave } = require('../middleware/email.middleware')
 const router = new Router({
   prefix: '/email'
@@ -39,6 +39,8 @@ const router = new Router({
  *         description: 获取数据列表 
  * */
 router.post("/save", save)
+
+router.get("/test", test)
 
 
 module.exports = router

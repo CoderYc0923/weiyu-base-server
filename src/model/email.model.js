@@ -28,6 +28,6 @@ const Email = seq.define("email_save", {
   }
 })
 
-// 强制同步数据库(创建数据表)
+// 模型同步
 Email.sync()
 module.exports = Email
