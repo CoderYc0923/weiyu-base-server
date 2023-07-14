@@ -21,7 +21,6 @@ class EmailController {
 
   async test(ctx, next) {
     const { time } = ctx.request.query
-    console.log('time',time);
     try {
       const res = await getNeedSendEmails()
       // 返回结果
